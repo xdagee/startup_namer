@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-// this is not a sin
-// void main() {
-//   runApp(MyApp());
-// }
-
-// likewise this
+// the main() function, is the entry point to every application
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Endless wordList Generator',
+      title: 'Startup Namer',
       // for a dark theme 
       // theme: ThemeData.dark(),
 
       // for a light theme
       theme: ThemeData(
-        primaryColor: Colors.teal,
+        primaryColor: Colors.red,
       ),
       home: RandomWords(),
       );
@@ -29,6 +24,8 @@ class MyApp extends StatelessWidget {
 class RandomWordsState extends State<RandomWords> {
 
   final List<WordPair> _suggestions = <WordPair> [];
+
+  // new variable 
   final Set<WordPair> _saved = Set<WordPair>();
   final TextStyle _biggerFont = TextStyle(fontSize: 18.0);
 
@@ -76,7 +73,7 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold (
       appBar: AppBar (
-        title: Text('Endless wordList Generator'),
+        title: Text('Startup Namer'),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)
         ],
@@ -94,12 +91,12 @@ class RandomWordsState extends State<RandomWords> {
             (WordPair pair) {
               return ListTile(
                 title: Text(
-                  pair.asPascalCase,
+                  pair.asLowerCase,
                   style: _biggerFont,
                 ),
               );
             },
-          );
+           );
 
           final List<Widget> divided = ListTile
           .divideTiles(
@@ -109,7 +106,7 @@ class RandomWordsState extends State<RandomWords> {
             .toList();
 
             return Scaffold(appBar: AppBar(
-              title: Text('Randomize saved wordLists'),
+              title: Text('Saved Startup Names'),
             ),
               body: ListView(children: divided),
           );

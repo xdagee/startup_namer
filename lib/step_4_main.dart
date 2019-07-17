@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Endless wordList Generator',
+      title: 'Startup Namer',
       home: RandomWords(),
       );
   }
@@ -28,7 +26,8 @@ class RandomWordsState extends State<RandomWords> {
 
         final index = i ~/ 2;
         if (index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
+          _suggestions.addAll(generateWordPairs()
+          .take(10));
         }
         return _buildRow(_suggestions[index]);
       });
@@ -47,7 +46,7 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold (
       appBar: AppBar (
-        title: Text('Endless wordList Generator'),
+        title: Text('Startup Namer'),
       ),
       body : _buildSuggestions(),
     );
